@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
+
   def index
     @tasks = Task.all
   end
@@ -7,26 +9,38 @@ class TasksController < ApplicationController
   end
 
   def new
-    @restaurant = Restaurant.new
+    @task = Task.new
   end
 
   def edit
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.save
-    redirect_to restaurant_path(@restaurant)
+    @task = Task.new(task_params)
+    @task.save
+    redirect_to task_path(@task)
   end
 
   def update
-    @restaurant.update(restaurant_params)
-    redirect_to restaurant_path(@restaurant)
+    @task.update(task_params)
+    redirect_to task_path(@task)
   end
 
   def destroy
-    @restaurant.delete
-    redirect_to restaurants_path
+    @task.delete
+    redirect_to tasks_path
+  end
+
+
+
+  private
+
+  def task_params
+    params.require(:task).permit(:name, :check, :due_date)
+  end
+
+  def set_task
+    @task = Task.find(params[:id])
   end
 
 end
