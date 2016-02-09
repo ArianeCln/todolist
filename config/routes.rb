@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root 'tasks#index'
   resources :tasks, except: :destroy
 
   # The priority is based upon order of creation: first created -> highest priority.

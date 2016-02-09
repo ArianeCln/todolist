@@ -1,8 +1,11 @@
 <%= link_to "Add a task", new_task_path %>
 
-<% @tasks.each do |task|%>
-  <h2><%= link_to task.name, task_path(task)  %></h2>
+<ul> <% @tasks.each do |task|%>
+  <li><h2><%= link_to task.name, task_path(task)  %></h2></li>
   <p><%= task.due_date %></p>
   <p><%= task.check %></p>
 
 <%end%>
+</ul>
+
+<%= link_to 'Destroy', tasks_path, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -1,1 +1,8 @@
-<p>azerty</p>
+<h1><%= @task.name %></h1>
+<p><%= @task.check %></p>
+<p><%= @task.due_date %></p>
+
+<%= link_to "Edit task", edit_task_path %>
+<%= link_to "Back to tasks", tasks_path %>
+
+
