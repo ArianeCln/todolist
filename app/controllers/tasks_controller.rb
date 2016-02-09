@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.delete
+    @task.destroy
     redirect_to tasks_path
   end
 
